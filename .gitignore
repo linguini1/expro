@@ -1,0 +1,5 @@
+*.o
+poly.exe
+poly
+compile_commands.json
+.cache/
