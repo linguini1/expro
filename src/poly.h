@@ -108,5 +108,6 @@ typedef struct {
 
 double expr_eval(const expr_t *expr, const substit_t *values);
 void expr_print(const expr_t *expr);
+void substitution_print(const substit_t *table);
 
 #endif // _POLY_H_

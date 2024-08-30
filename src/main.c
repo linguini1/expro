@@ -20,7 +20,11 @@ int main(void) {
     );
 
     // Print expression
+    printf("Evaluating: ");
     expr_print(&my_expr);
+
+    printf("where\n");
+    substitution_print(&values);
 
     // Evaluate
     double result = expr_eval(&my_expr, &values);

@@ -105,3 +105,15 @@ void expr_print(const expr_t *expr) {
     __expr_print(expr, 0);
     putchar('\n');
 }
+
+/*
+ * Print a substitution table.
+ * @param table The substitution table to print.
+ */
+void substitution_print(const substit_t *table) {
+    for (unsigned long i = 0; i < table->len; i++) {
+        printf("%s = ", table->entries[i].name);
+        __expr_print(&table->entries[i].value, 0);
+        putchar('\n');
+    }
+}

@@ -22,8 +22,15 @@ expr_t my_expr = o_add(
 Print the expression using `expr_print` to see your expression and verify that it's correct.
 
 ```c
+printf("Evaluating: ");
 expr_print(&my_expr);
-// ((sin(x))^(2.000000)) + (4.000000)
+
+printf("where\n");
+substitution_print(&values);
+// Evaluating: ((sin(x))^(2.000000)) + (4.000000)
+// where
+// x = 3.141593
+// Result: 4.000000
 ```
 
 Evaluate the expression using `expr_eval`, passing in a table of values to substitute variables with. You can substitute
