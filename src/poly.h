@@ -1,6 +1,8 @@
 #ifndef _POLY_H_
 #define _POLY_H_
 
+#include <math.h>
+
 /* Expression types */
 
 typedef enum expr_e {
@@ -35,21 +37,16 @@ typedef struct {
     expr_t y; /* y (second) operand */
 } operation_t;
 
-/* Function types */
+/* Function which takes a double argument and returns a double */
 
-typedef enum {
-    FUNC_SIN,  /* Sine */
-    FUNC_COS,  /* Cosine */
-    FUNC_TAN,  /* Tangent */
-    FUNC_ATAN, /* Arc tangent */
-    FUNC_LN,   /* Natural logarithm */
-} function_e;
+typedef double(function_f)(double);
 
 /* Function structure */
 
 typedef struct {
-    function_e type;
+    function_f *func;
     expr_t param;
+    const char *name;
 } function_t;
 
 /* Complex numbers */
@@ -97,12 +94,11 @@ typedef struct {
 
 /* Function helpers */
 
-#define f_sin(_x) __expr(EXPR_FUNC, ((function_t){.type = FUNC_SIN, .param = (_x)}))
-#define f_cos(_x) __expr(EXPR_FUNC, ((function_t){.type = FUNC_COS, .param = (_x)}))
-#define f_tan(_x) __expr(EXPR_FUNC, ((function_t){.type = FUNC_TAN, .param = (_x)}))
-#define f_atan(_x) __expr(EXPR_FUNC, ((function_t){.type = FUNC_ATAN, .param = (_x)}))
-#define f_sec(_x) __expr(EXPR_FUNC, ((function_t){.type = FUNC_SEC, .param = (_x)}))
-#define f_ln(_x) __expr(EXPR_FUNC, ((function_t){.type = FUNC_LN, .param = (_x)}))
+#define f_sin(_x) __expr(EXPR_FUNC, ((function_t){.name = "sin", .param = (_x), .func = sin}))
+#define f_cos(_x) __expr(EXPR_FUNC, ((function_t){.name = "cos", .param = (_x)}, .func = cos))
+#define f_tan(_x) __expr(EXPR_FUNC, ((function_t){.name = "tan", .param = (_x)}, .func = tan))
+#define f_atan(_x) __expr(EXPR_FUNC, ((function_t){.name = "atan", .param = (_x), .func = atan}))
+#define f_ln(_x) __expr(EXPR_FUNC, ((function_t){.name = "ln", .param = (_x)}, .func = log))
 
 /* Evaluation */
 

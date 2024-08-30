@@ -1,6 +1,4 @@
 #include <assert.h>
-#include <math.h>
-#include <stdio.h>
 #include <string.h>
 
 #include "poly.h"
@@ -68,19 +66,7 @@ static double var_get_val(const char *name, const substit_t *values) {
  * @return The result of evaluating the function.
  */
 static double func_eval(const function_t *func, const substit_t *values) {
-    switch (func->type) {
-    case FUNC_SIN:
-        return sin(__expr_eval(&func->param, values));
-    case FUNC_COS:
-        return cos(__expr_eval(&func->param, values));
-    case FUNC_TAN:
-        return tan(__expr_eval(&func->param, values));
-    case FUNC_ATAN:
-        return atan(__expr_eval(&func->param, values));
-    case FUNC_LN:
-        return log(__expr_eval(&func->param, values));
-    }
-    assert(0);
+    return func->func(__expr_eval(&func->param, values));
 }
 
 /*

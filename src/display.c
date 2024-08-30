@@ -50,23 +50,7 @@ static void op_print(const operation_t *op) {
  * @param func The function to print.
  */
 static void func_print(const function_t *func) {
-    switch (func->type) {
-    case FUNC_SIN:
-        printf("sin");
-        break;
-    case FUNC_COS:
-        printf("cos");
-        break;
-    case FUNC_TAN:
-        printf("tan");
-        break;
-    case FUNC_ATAN:
-        printf("atan");
-        break;
-    case FUNC_LN:
-        printf("ln");
-        break;
-    }
+    printf("%s", func->name);
     __expr_print(&func->param, 1);
 }
 
