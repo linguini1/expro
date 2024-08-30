@@ -70,6 +70,10 @@ typedef struct {
     unsigned long len;
 } substit_t;
 
+/* Stringify text */
+
+#define __stringify(exp) #exp
+
 /* Variable substitution entry */
 
 #define substitution(_name, _value) ((entry_t){.name = (_name), .value = (_value)})
@@ -99,6 +103,7 @@ typedef struct {
 #define f_tan(_x) __expr(EXPR_FUNC, ((function_t){.name = "tan", .param = (_x)}, .func = tan))
 #define f_atan(_x) __expr(EXPR_FUNC, ((function_t){.name = "atan", .param = (_x), .func = atan}))
 #define f_ln(_x) __expr(EXPR_FUNC, ((function_t){.name = "ln", .param = (_x)}, .func = log))
+#define f_custom(_f, _x) __expr(EXPR_FUNC, ((function_t){.name = __stringify(_f), .param = (_x), .func = (_f)}))
 
 /* Evaluation */
 
