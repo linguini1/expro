@@ -1,6 +1,8 @@
-# poly
+# expro
 
-Just a silly bunch of preprocessor macros for creating mathematical expressions in C.
+A C pre-processor based API for generating mathematical expressions like a scripting language.
+
+`expro`: a blend of the words "expression" and "macro".
 
 # Usage
 
